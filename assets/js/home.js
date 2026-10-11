@@ -8,7 +8,7 @@
     for (const section of sections) {
       if (section.getBoundingClientRect().top <= 140) current = section;
     }
-    if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 4) current = sections[sections.length - 1];
+    if (window.scrollY > 0 && Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 4) current = sections[sections.length - 1];
     for (const link of links) {
       const active = link.getAttribute('href') === `#${current.id}`;
       link.classList.toggle('active', active);

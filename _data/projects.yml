@@ -1,19 +1,2 @@
-# Descriptions summarize public repositories; they do not claim paper authorship.
-- title: Buried Space Life Identification System
-  category: Scientific visualization
-  description: A Vue 3 and Unreal Engine 5 interface for simulation, post-processing, and real-time visualization through Pixel Streaming.
-  tags: [Vue 3, Unreal Engine 5, WebRTC]
-  url: https://github.com/konglingyi11/Firedamp-leakage
-  repo: Firedamp-leakage
-- title: RecDiff
-  category: Research code
-  description: A code repository combining diffusion models and graph neural networks for social recommendation and social-signal denoising.
-  tags: [Python, PyTorch, Recommendation]
-  url: https://github.com/konglingyi11/recdiff
-  repo: recdiff
-- title: AutoDL Instance Skill
-  category: Developer tools
-  description: HTTP tools and documentation for managing AutoDL compute instances, private images, and resource workflows.
-  tags: [Python, HTTP, Automation]
-  url: https://github.com/konglingyi11/autodl-skills
-  repo: autodl-skills
+# Add your own projects here when you want to showcase them.
+[]

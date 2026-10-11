@@ -2,16 +2,16 @@
 
 Live site: https://konglingyi11.github.io
 
-An English academic homepage based on [Academic Pages](https://github.com/academicpages/academicpages.github.io), with a responsive custom layout, a profile, public projects, and a contact section. The original theme layouts remain available for additional pages.
+An English academic homepage based on [Academic Pages](https://github.com/academicpages/academicpages.github.io), with a responsive custom layout, a profile, research focus, and a contact section. The original theme layouts remain available for additional pages.
 
 ## Update your content
 
 - `_data/profile.yml`: name, affiliation, research focus, introduction, GitHub, and optional email, portrait, CV, Google Scholar, or ORCID.
-- `_data/projects.yml`: project titles, descriptions, technology tags, and repository links.
+- `_data/projects.yml`: optional original projects. The project section, navigation, and button stay hidden while this list is empty.
 - `_data/publications.yml`: verified publications. The homepage shows this section and its navigation link when the list contains entries.
 - `_config.yml`: site title, search description, GitHub repository, and site URL.
 - `_pages/about.md`: homepage entry and layout, matching the Academic Pages tutorial.
-- `_data/navigation.yml`: navigation titles and links. The Publications item stays hidden until publications are supplied.
+- `_data/navigation.yml`: navigation titles and links. Projects and Publications stay hidden while their lists are empty.
 - `assets/css/home.css`: homepage colors, typography, and responsive layout.
 
 Blank optional profile fields stay hidden. Upload a real portrait to `images/`, then set `avatar: /images/portrait.jpg`. Upload a CV to `files/`, then set `cv: /files/cv.pdf`. No sample academic records or invented publications are included.
@@ -57,6 +57,6 @@ JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter --trace
 
 ## Content sources and license
 
-The affiliation was supplied by Lingyi Kong; its English school name follows the university's [official site](https://global.cumt.edu.cn/Global_Research/Find_an_Expert/School_of_Computer_Science___Technology.htm). Project descriptions summarize the linked public repository READMEs. The RecDiff entry is a repository link and does not assert authorship of its associated paper.
+The affiliation and research focus were supplied by Lingyi Kong; the English school name follows the university's [official site](https://global.cumt.edu.cn/Global_Research/Find_an_Expert/School_of_Computer_Science___Technology.htm).
 
 Academic Pages and the underlying Minimal Mistakes theme are covered by the retained `LICENSE`. See [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) for deployment details.
