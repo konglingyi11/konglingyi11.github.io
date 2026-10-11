@@ -1,13 +1,9 @@
 source 'https://rubygems.org'
 
-group :jekyll_plugins do
-  gem 'jekyll'
-  gem 'jekyll-feed'
-  gem 'jekyll-sitemap'
-  gem 'jekyll-redirect-from'
-  gem 'jemoji'
-  gem 'webrick', '~> 1.8'
-end
-
-gem 'github-pages'
-gem 'connection_pool', '2.5.0'
+# Jekyll 3.10 retains compatibility with the Academic Pages Sass theme.
+gem 'jekyll', '~> 3.10'
+gem 'kramdown-parser-gfm', '~> 1.1'
+gem 'jekyll-feed', '~> 0.17'
+gem 'jekyll-sitemap', '~> 1.4'
+gem 'jekyll-redirect-from', '~> 0.16'
+gem 'webrick', '~> 1.8'

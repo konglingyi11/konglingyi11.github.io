@@ -1,0 +1,91 @@
+{% assign profile = site.data.profile %}
+{% include base_path %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include seo.html %}
+  <meta name="theme-color" content="#f8f9f6">
+  <link rel="icon" type="image/svg+xml" href="{{ '/images/monogram.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  <script src="{{ '/assets/js/home.js' | relative_url }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell">
+    <aside class="profile-panel" aria-label="Profile and navigation">
+      <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ profile.name | escape }} homepage">{{ profile.initials | escape }}<span>.</span></a>
+      <div class="profile-summary">
+        {% if profile.avatar and profile.avatar != '' %}
+        <img class="portrait" src="{{ profile.avatar | relative_url }}" width="120" height="152" alt="{{ profile.name | escape }}">
+        {% else %}
+        <div class="monogram" aria-hidden="true">{{ profile.initials | escape }}<span class="monogram-dot"></span></div>
+        {% endif %}
+        <p class="profile-name">{{ profile.name | escape }}</p>
+        <p class="profile-role">{{ profile.role | escape }}</p>
+        <a class="profile-university" href="{{ profile.university_url | escape }}">{{ profile.university | escape }}</a>
+        <p class="focus-label">RESEARCH FOCUS</p>
+        <p class="focus-value">{{ profile.research | escape }}</p>
+      </div>
+      <nav class="section-nav" aria-label="Main navigation">
+        <a href="#about" class="active" aria-current="location"><span>01</span> About</a>
+        <a href="#projects"><span>02</span> Projects</a>
+        {% if site.data.publications.size > 0 %}<a href="#publications"><span>03</span> Publications</a>{% endif %}
+        <a href="#contact"><span>{% if site.data.publications.size > 0 %}04{% else %}03{% endif %}</span> Contact</a>
+      </nav>
+      <div class="profile-links">
+        <a href="https://github.com/{{ profile.github | escape }}">{% include home-icon.html name='github' %}<span>GitHub</span><span aria-hidden="true">↗</span></a>
+        {% if profile.email and profile.email != '' %}<a href="mailto:{{ profile.email | escape }}">{% include home-icon.html name='mail' %}<span>Email</span><span aria-hidden="true">↗</span></a>{% endif %}
+        {% if profile.scholar and profile.scholar != '' %}<a href="{{ profile.scholar | escape }}">Google Scholar <span aria-hidden="true">↗</span></a>{% endif %}
+        {% if profile.orcid and profile.orcid != '' %}<a href="{{ profile.orcid | escape }}">ORCID <span aria-hidden="true">↗</span></a>{% endif %}
+      </div>
+      <p class="panel-note">Research, ideas &amp; code.</p>
+    </aside>
+
+    <div class="content-panel">
+      <header class="topbar"><span>PERSONAL / ACADEMIC HOMEPAGE</span><a href="https://github.com/{{ profile.github | escape }}" aria-label="View {{ profile.name | escape }} on GitHub">@{{ profile.github | escape }} <span aria-hidden="true">↗</span></a></header>
+      <main id="main">
+        <section id="about" class="about-section" aria-labelledby="about-title">
+          {% if profile.avatar and profile.avatar != '' %}<img class="mobile-portrait" src="{{ profile.avatar | relative_url }}" width="82" height="104" alt="{{ profile.name | escape }}">{% endif %}
+          <p class="eyebrow"><span class="tiny-dot" aria-hidden="true"></span> {{ profile.role | escape }} · CUMT</p>
+          <h1 id="about-title">{{ profile.name | escape }}<span class="title-dot">.</span></h1>
+          <p class="hero-focus">Researching <em>{{ profile.research | downcase | escape }}.</em></p>
+          <p class="intro">{{ profile.intro | escape }}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↘</span></a>
+            {% if profile.cv and profile.cv != '' %}<a class="button button-plain" href="{{ profile.cv | relative_url }}">Curriculum vitae <span aria-hidden="true">↗</span></a>{% else %}<a class="button button-plain" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>{% endif %}
+          </div>
+          <div class="affiliation"><span class="affiliation-icon" aria-hidden="true">{% include home-icon.html name='school' %}</span><div><a href="{{ profile.school_url | escape }}">{{ profile.school | escape }}</a><a href="{{ profile.university_url | escape }}">{{ profile.university | escape }}</a></div></div>
+        </section>
+
+        <section id="projects" class="projects-section" aria-labelledby="projects-title">
+          <div class="section-heading"><div><p class="eyebrow">SELECTED WORK</p><h2 id="projects-title">Projects &amp; code<span>.</span></h2></div><a class="text-link" href="https://github.com/{{ profile.github | escape }}?tab=repositories">All repositories <span aria-hidden="true">↗</span></a></div>
+          <p class="section-description">{{ profile.project_intro | escape }}</p>
+          <div class="project-list">
+            {% for project in site.data.projects %}
+            <article class="project">
+              <span class="project-number" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+              <div class="project-body"><p class="project-category">{{ project.category | escape }}</p><h3><a href="{{ project.url | escape }}">{{ project.title | escape }}<span class="project-arrow" aria-hidden="true">↗</span></a></h3><p class="project-description">{{ project.description | escape }}</p><ul class="project-tags" aria-label="Technologies">{% for tag in project.tags %}<li>{{ tag | escape }}</li>{% endfor %}</ul></div>
+            </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        {% if site.data.publications.size > 0 %}
+        <section id="publications" class="publications-section" aria-labelledby="publications-title">
+          <div class="section-heading"><div><p class="eyebrow">RESEARCH OUTPUT</p><h2 id="publications-title">Publications<span>.</span></h2></div></div>
+          {% for paper in site.data.publications %}<article class="publication"><p class="project-category">{{ paper.venue | escape }} · {{ paper.year | escape }}</p><h3><a href="{{ paper.url | escape }}">{{ paper.title | escape }} <span aria-hidden="true">↗</span></a></h3><p>{{ paper.authors | escape }}</p>{% if paper.code and paper.code != '' %}<a class="text-link" href="{{ paper.code | escape }}">Code <span aria-hidden="true">↗</span></a>{% endif %}</article>{% endfor %}
+        </section>
+        {% endif %}
+
+        <section id="contact" class="contact-section" aria-labelledby="contact-title">
+          <div><p class="eyebrow">LET'S CONNECT</p><h2 id="contact-title">Keep in touch<span>.</span></h2><p>Interested in gas prediction, research, or code?<br>Find me on GitHub{% if profile.email and profile.email != '' %} or send me an email{% endif %}.</p></div>
+          <div class="contact-actions">{% if profile.email and profile.email != '' %}<a class="button button-primary" href="mailto:{{ profile.email | escape }}">Send an email <span aria-hidden="true">↗</span></a>{% endif %}<a class="button {% if profile.email and profile.email != '' %}button-plain{% else %}button-primary{% endif %}" href="https://github.com/{{ profile.github | escape }}">{% include home-icon.html name='github' %} GitHub profile <span aria-hidden="true">↗</span></a></div>
+        </section>
+      </main>
+      <footer class="site-footer"><p>© {{ site.time | date: '%Y' }} {{ profile.name | escape }}</p><p>Built with <a href="https://github.com/academicpages/academicpages.github.io">Academic Pages</a><span aria-hidden="true"> · </span><a href="#about">Back to top ↑</a></p></footer>
+    </div>
+  </div>
+</body>
+</html>

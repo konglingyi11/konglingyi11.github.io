@@ -1,0 +1,20 @@
+# Edit this file to update the homepage. Optional blank fields are hidden.
+name: Lingyi Kong
+initials: LK
+role: Graduate student
+school: School of Computer Science and Technology
+school_url: https://cs.cumt.edu.cn/
+university: China University of Mining and Technology
+university_url: https://www.cumt.edu.cn/
+research: Gas prediction
+intro: >-
+  I am a graduate student at the School of Computer Science and Technology,
+  China University of Mining and Technology. My research focuses on gas prediction.
+project_intro: A selection of publicly available code, from scientific visualization to research and developer tools.
+github: konglingyi11
+# Use a local image path (e.g. /images/portrait.jpg) when a portrait is available.
+avatar: /images/portrait.png
+email:
+scholar:
+orcid:
+cv:
