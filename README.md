@@ -10,6 +10,8 @@ An English academic homepage based on [Academic Pages](https://github.com/academ
 - `_data/projects.yml`: project titles, descriptions, technology tags, and repository links.
 - `_data/publications.yml`: verified publications. The homepage shows this section and its navigation link when the list contains entries.
 - `_config.yml`: site title, search description, GitHub repository, and site URL.
+- `_pages/about.md`: homepage entry and layout, matching the Academic Pages tutorial.
+- `_data/navigation.yml`: navigation titles and links. The Publications item stays hidden until publications are supplied.
 - `assets/css/home.css`: homepage colors, typography, and responsive layout.
 
 Blank optional profile fields stay hidden. Upload a real portrait to `images/`, then set `avatar: /images/portrait.jpg`. Upload a CV to `files/`, then set `cv: /files/cv.pdf`. No sample academic records or invented publications are included.

@@ -29,10 +29,13 @@
         <p class="focus-value">{{ profile.research | escape }}</p>
       </div>
       <nav class="section-nav" aria-label="Main navigation">
-        <a href="#about" class="active" aria-current="location"><span>01</span> About</a>
-        <a href="#projects"><span>02</span> Projects</a>
-        {% if site.data.publications.size > 0 %}<a href="#publications"><span>03</span> Publications</a>{% endif %}
-        <a href="#contact"><span>{% if site.data.publications.size > 0 %}04{% else %}03{% endif %}</span> Contact</a>
+        {% assign nav_index = 0 %}
+        {% for link in site.data.navigation.main %}
+          {% if link.url == '/#publications' and site.data.publications.size == 0 %}{% continue %}{% endif %}
+          {% assign nav_index = nav_index | plus: 1 %}
+          {% if link.url contains '/#' %}{% assign nav_url = link.url | remove_first: '/' %}{% elsif link.url contains '://' %}{% assign nav_url = link.url %}{% else %}{% assign nav_url = link.url | relative_url %}{% endif %}
+          <a href="{{ nav_url | escape }}"{% if nav_index == 1 %} class="active" aria-current="location"{% endif %}><span>{% if nav_index < 10 %}0{% endif %}{{ nav_index }}</span> {{ link.title | escape }}</a>
+        {% endfor %}
       </nav>
       <div class="profile-links">
         <a href="https://github.com/{{ profile.github | escape }}">{% include home-icon.html name='github' %}<span>GitHub</span><span aria-hidden="true">↗</span></a>
